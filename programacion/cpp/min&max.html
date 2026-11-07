@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>std::min y std::max</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <header>Como funcionan std::min y std::max</header>
+  <p>En este codigo se imprime x o y?</p>
+  <pre><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+  int x = 5;
+  int y = 5;
+
+  std::cout &lt;&lt; std::min(x, y) &lt;&lt; "\n";
+  
+  return 0;
+}
+  </code></pre>
+  
+  <h2>Analisis</h2>
+  <p>Para esto, necesitamos ver como esta implementado std::min en la STL</p>
+  <pre><code class="language-cpp">
+template&lt;class T, class Compare&gt;
+const T& min (const T& a, const T& b, Compare comp);
+
+template&lt;class T, class Compare&gt;
+T min (std::initializer_list&lt;T&gt; ilist, Compare comp);
+  </code></pre>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-c.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-cpp.min.js"></script>
+
+</body>
+</html>

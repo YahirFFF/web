@@ -1,0 +1,242 @@
+:root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface-hover: #21262d;
+    --border: #30363d;
+
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+
+    --accent: #58a6ff;
+    --accent-hover: #79c0ff;
+
+    --code-bg: #161b22;
+
+    --max-width: 1000px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+
+    font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+
+    font-size: 28px;
+    line-height: 1.7;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    max-width: var(--max-width);
+    margin: auto;
+    font-size: 1.8rem;
+}
+
+nav {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 15px 20px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+}
+
+main {
+    max-width: var(--max-width);
+    margin: 24px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+}
+
+ul, ol {
+    margin: 16px 0;
+    padding-left: 30px;
+}
+
+article {
+    max-width: 850px;
+    margin: auto;
+}
+
+article h1 {
+    margin-bottom: 25px;
+}
+
+article section {
+    margin-bottom: 35px;
+}
+
+pre {
+    background-color: var(--code-bg) !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    padding: 6px 8px;
+    margin: 10px 0;
+
+    overflow-x: auto;
+
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+}
+
+pre code,
+pre code span,
+pre code * {
+    font-family: "JetBrains Mono", "Fira Code",
+        "Cascadia Code", monospace !important;
+
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+
+    background: transparent !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+p code,
+li code,
+td code {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    background-color: var(--surface);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 15px 0;
+    margin: 20px 0;
+}
+
+.katex {
+    font-size: 1.1em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+th {
+    background-color: var(--surface);
+}
+
+blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 10px 20px;
+    margin: 20px 0;
+
+    color: var(--text-muted);
+    background-color: var(--surface);
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 25px;
+    margin-top: 60px;
+
+    text-align: center;
+    color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    main {
+        margin-top: 25px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    pre {
+        padding: 6px 8px;
+    }
+
+    pre code,
+    pre code span,
+    pre code * {
+        font-size: 11px !important;
+    }
+}
