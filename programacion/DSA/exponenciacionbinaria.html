@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponenciacion binaria</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"></script>
+</head>
+  <body>
+   <header>Exponenciacion binaria</header>
+    <main>
+   <p>La exponenciacion binaria es un metodo que nos permite calcular $a^n$ , donde $n \in \mathbb{N}$
+    usando solo $O(logn)$ operaciones en lugar de las $O(n)$ habituales.
+  </p>
+
+  <p>Mas adelante discutiremos las aplicaciones que no son precisamente pocas.</p>
+
+  <h2>Algoritmo</h2>
+  <p>Podemos notar que elevar $a^b$ con el metodo tradicional necesita b operaciones, osea : </p>
+  <p>$$\underbrace{a \cdot a \cdot a \cdot ... \cdot a}_{b}$$</p>
+
+  <p>Podemos notar que este metodo no es practico para un $a$ muy grande o un $b$ muy grande.</p>
+
+  <p>Como $a^{b+c} = a^b \cdot a^c$, entonces podemos usar la siguiente idea: </p> 
+  
+  <p>Si escribimos el exponente en base 2, por ejemplo: $$7^{14} = 7^{1110_2}$$</p>
+  <p>Podemos notar que: $$7^{14} = 7^8 \cdot 7^4 \cdot 7^2$$</p>
+  <p>Por lo que si un numero en binario tiene $\lfloor log_2n\rfloor + 1 $ digitos, eso significa que necesitamos solo $ O(log n)$
+    operaciones, en vez de las $O(n)$ con el metodo tradicional.
+  </p>
+
+  <p>Afortunadamente, hacer estos calculos es muy sencillo</p>
+  <p>Podemos notar que cada elemento es simplemente el cuadrado del anterior
+    $$7^1 = 7$$
+    $$7^2 = (7^1)^2 = 7^2 = 49$$
+    $$7^4 = (7^2)^2 = 49^2 = 2041$$
+    $$7^8 = (7^4)^2 = 2041^2 = 4,165,681$$
+
+    Por lo que $$7^{14} = 7^8 \cdot 7^4 \cdot 7^2$$
+
+    Generalizando la funcion, nos queda :
+    $$a^n = \begin{cases}
+     1 & \text {si } n == 0 \\
+     (a^{\frac{n}{2}})^2 & \text {si } n > 0 \text { y } n \text{ es par} \\ 
+     (a^{\frac{n-1}{2}})^2 \cdot a & \text {si } n > 0 \text { y } n \text { es impar} \\ 
+     \end{cases}$$ 
+  </p>
+
+  <h2>Implementacion</h2>
+  <p>Podemos implementar facilmente usando la definicion de arriba</p>
+  <pre><code class="language-cpp">
+using i64 = int64_t;
+
+auto expbin = [&](i64 a, i64 n) -&gt; i64 {
+  if (n == 0) return 1;
+
+  i64 ret = expbin(a, b / 2);
+
+  if (n % 2 == 0) return ret * ret;
+  else return ret * ret * a; 
+};
+  </code></pre>
+
+  <p>Tambien podemos hacer una implementacion no recursiva para evitar el overhead.</p>
+
+  <pre><code class="language-cpp">
+using i64 = int64_t;
+
+auto expbin(i64 a, i64 b) -&gt; {
+  i64 ret = 1;
+
+  while (b > 0) {
+    if (b % 2) ret *= a;
+
+    a *= a;
+    b /= 2;
+  }
+
+  return ret;
+};
+  </code></pre>
+  </main>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "\\[", right: "\\]", display: true}
+          ],
+          throwOnError: false
+      });
+  });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-c.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-cpp.min.js"></script>
+
+  </script>
+  </body>
+</html>
